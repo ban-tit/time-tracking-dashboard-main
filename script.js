@@ -145,7 +145,7 @@ const updateActivityData = (timeframe) => {
 
     activitySection.innerHTML = `
       <div class="activity__bg">
-          <img src="images/icon-${title}.svg" alt=${title} />
+          <img src="./images/icon-${title.toLowerCase()}.svg" alt=${title} />
         </div>
         <div class="activity__info">
           <header class="activity__header">
