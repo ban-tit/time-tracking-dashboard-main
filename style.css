@@ -1,0 +1,366 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap");
+
+html {
+  font-family: "Rubik", sans-serif;
+
+  /* Colors */
+
+  --blue-100: hsl(236, 100%, 87%);
+  --blue-200: hsl(235, 45%, 61%);
+  --blue-300: hsl(195, 74%, 62%);
+  --blue-500: hsl(246, 80%, 60%);
+  --blue-700: hsl(236, 41%, 34%);
+  --blue-800: hsl(235, 46%, 20%);
+  --blue-900: hsl(226, 43%, 10%);
+  --red-200: hsl(15, 100%, 70%);
+  --red-500: hsl(348, 100%, 68%);
+  --lime-green-500: hsl(145, 58%, 55%);
+  --violet-500: hsl(264, 64%, 52%);
+  --orange-400: hsl(43, 84%, 65%);
+
+  /* Fonts */
+  --font-size-h1: clamp(2.4rem, 1.8366rem + 1.5023vw, 4rem);
+  --font-size-time-window: 1.8rem;
+  --font-size-activity-name: 1.8rem;
+  --font-size-activity-result: clamp(3.2rem, 2.3549rem + 2.2535vw, 5.6rem);
+  --font-size-activity-window: 1.5rem;
+
+  /* Z-indexes */
+
+  --z-index-top: 10;
+  --z-index-middle: 5;
+  --z-index-bottom: 1;
+
+  /* Border Radius */
+
+  --br: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  min-width: 0;
+}
+
+body {
+  background-color: var(--blue-900);
+  max-width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+  overflow-x: hidden;
+  color: var(--blue-100);
+}
+
+section.activity-tracker {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 2rem;
+  min-width: 0; /* grid overflow ကာကွယ် */
+  box-sizing: border-box; /* padding, border တွေပါအောင် */
+  overflow-x: hidden; /* grid container ထဲမှာလည်း horizontal scroll မဖြစ်အောင် */
+}
+
+.activity-tracker__activity,
+.activity-tracker__menu {
+  min-width: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.activity-tracker__activity:hover {
+  .activity__info {
+    background-color: var(--blue-500);
+  }
+}
+
+.activity-tracker__menu {
+  width: 100%;
+  gap: 1.2rem;
+  border-radius: var(--br);
+  background-color: var(--blue-700);
+}
+
+.activity-tracker__menu {
+  align-items: center;
+  gap: 1.2rem;
+  border-radius: var(--br);
+  background-color: var(--blue-700);
+}
+
+.activity-tracker__owner {
+  display: flex;
+  color: white;
+  align-items: center;
+  background-color: var(--blue-500);
+  padding: 1rem;
+  border-radius: var(--br);
+}
+
+.activity-tracker__owner-for {
+  color: var(--blue-100);
+}
+
+.activity-tracker__owner-name {
+}
+
+.activity-tracker__owner-img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+  border: 3px solid white;
+}
+
+.activity-tracker__options {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button {
+  padding: 1.1rem 1.5rem;
+  display: inline-block;
+  background-color: var(--blue-700);
+  border: none;
+  width: 100%;
+  border-radius: var(--br);
+  text-align: center;
+  color: var(--blue-200);
+  transition: color 300ms;
+}
+
+button:is(:hover, .active) {
+  color: white;
+  cursor: pointer;
+}
+
+/* card start */
+
+.activity-tracker__activity {
+  border-radius: var(--br);
+  background-color: var(--blue-800);
+  position: relative;
+  overflow: hidden;
+  height: fit-content;
+}
+
+.work {
+  background-color: var(--red-200);
+}
+
+.play {
+  background-color: var(--blue-300);
+}
+
+.study {
+  background-color: var(--red-500);
+}
+
+.exercise {
+  background-color: var(--lime-green-500);
+}
+
+.social {
+  background-color: var(--violet-500);
+}
+
+.self-care {
+  background-color: var(--orange-400);
+}
+
+.activity__bg {
+  z-index: var(--z-index-bottom);
+  display: grid;
+  place-items: start end;
+  height: 2.4rem;
+  overflow: hidden;
+}
+
+.activity__bg > img {
+  transform: translate(-1rem, -0.7rem);
+  height: fit-content;
+}
+
+.activity__info {
+  border-radius: var(--br);
+  padding: .5rem 1.5rem;
+  overflow-y: hidden;
+  background-color: var(--blue-700);
+  position: relative;
+  z-index: var(--z-index-top);
+  color: var(--blue-100);
+}
+
+.activity__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activity__name {
+  color: white;
+  font-weight: 400;
+}
+
+.activity__timeframes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -3rem;
+  margin-bottom: -1rem;
+}
+
+.activity__current-timeframe {
+  font-size: var(--font-size-time-window);
+  color: white;
+  font-weight: 300;
+}
+
+.activity__previous-timeframe {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 14px;
+}
+
+.dash {
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+}
+
+/* card end */
+
+@media screen and (min-width: 500px) {
+  section.activity-tracker {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .activity-tracker__menu {
+    grid-row: 1/3;
+  }
+
+  .activity-tracker__owner {
+    display: block;
+    padding: 1.5rem 2rem;
+    gap: 3rem;
+  }
+
+  .activity-tracker__owner-img {
+    margin-top: 0.5rem;
+  }
+
+  .activity-tracker__owner-for {
+    margin-top: 2rem;
+    margin-bottom: -2rem;
+  }
+
+  .activity-tracker__owner-name {
+    font-size: var(--font-size-h1);
+    font-weight: 500;
+    color: white;
+  }
+
+  .activity-tracker__options {
+    display: block;
+    height: 100%;
+  }
+
+  button {
+    text-align: left;
+  }
+
+  .activity-tracker__activity {
+    grid-template-rows: 4.5rem 1fr;
+    height:100%;
+  }
+
+  .activity__info {
+    overflow-y: hidden;
+    height: 100%;
+
+  }
+
+  .activity__timeframes {
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+
+  .activity__current-timeframe {
+    font-size: var(--font-size-h1);
+    font-weight: 500;
+  }
+
+  .activity__previous-timeframe {
+    margin-top: -3.5rem;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .activity__previous-timeframe {
+    margin-top: -4rem;
+  }
+  
+}
+
+@media screen and (min-width: 1110px) {
+  section.activity-tracker {
+    max-width: 1110px;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  .activity-tracker__activity,
+  .activity-tracker__menu {
+    min-width: 0;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .activity__previous-timeframe {
+    margin-top: -4.5rem;
+  }
+}
+
+/*
+
+
+
+
+
+@media screen and (min-width: 500px) {
+  
+}
+
+
+
+@media screen and (min-width: 500px) {
+  
+}
+
+
+
+@media screen and (min-width: 500px) {
+  
+}
+
+/* 
+
+
+
+
+/*# sourceMappingURL=index.css.map
+
+
+
+
+
