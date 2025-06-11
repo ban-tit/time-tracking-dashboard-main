@@ -186,6 +186,12 @@ button:is(:hover, .active) {
   height: fit-content;
 }
 
+.activity__options svg path:hover {
+  cursor: pointer;
+  user-select: none;
+  fill: white;
+}
+
 .activity__info {
   border-radius: var(--br);
   padding: .5rem 1.5rem;
